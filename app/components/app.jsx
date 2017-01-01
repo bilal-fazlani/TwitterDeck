@@ -9,7 +9,7 @@ class App extends React.Component{
 
             <AppHeader />
 
-            {this.props.handles.map((h)=><Block handle={h.name} tweets={h.tweets} />)}
+            {this.props.handles.map((h)=><Block name={h.name} tweets={h.tweets} />)}
         </div>
     }
 }

@@ -1,3 +1,7 @@
-export default (prev, action)=>{
-    return prev;
-}
+
+import {combineReducers} from 'redux'
+import handlesReducer from './handlesReducer'
+
+export default combineReducers({
+    handles: handlesReducer
+})
