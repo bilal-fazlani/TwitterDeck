@@ -7,7 +7,8 @@ class HandleInput extends React.Component{
             width:400
         }
 
-        return <div style={{margin:5}}>
+        return <div style={{marginBottom:15, marginTop:15,
+            marginLeft:"auto", marginRight:"auto", width:500}}>
             <form onSubmit={(e)=> e.preventDefault()}>
                 <TextField hintText="#handle" style={style} />
                 &nbsp;&nbsp;
