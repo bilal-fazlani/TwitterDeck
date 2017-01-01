@@ -9,9 +9,10 @@ import TwitterDeckApp from './components/twitterDeckApp'
 import rootReducer from './reducers/rootReducer'
 import reactDOM from 'react-dom'
 import {composeWithDevTools} from 'redux-devtools-extension'
-//import injectTapEventPlugin from 'react-tap-event-plugin';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-//injectTapEventPlugin();
+injectTapEventPlugin();
 
 let initialState = getInitialState();
 let enhancer=composeWithDevTools();
@@ -35,7 +36,9 @@ if (module.hot) {
 const load = () => {
     reactDOM.render(
         <Provider store={store} >
-            <TwitterDeckApp />
+            <MuiThemeProvider>
+                <TwitterDeckApp />
+            </MuiThemeProvider>
         </Provider>,
         document.querySelector("#app")
     )
