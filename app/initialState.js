@@ -3,7 +3,13 @@
  */
 export default ()=> {
     return {
-        addHandleText : '',
-        handles:[]
+        handles:[{
+            name:"dangal",
+            tweets:[{
+                text:"this is a sample tweet",
+                profilePicUrl:"http://www.material-ui.com/images/ok-128.jpg",
+                name:"my name is khan"
+            }]
+        }]
     }
 }

@@ -1,19 +1,23 @@
 import  React from "react";
 import Block from './block'
 import AppHeader from './appHeader'
+import {connect} from 'react-redux'
 
-class twitterDeckApp extends React.Component{
+class App extends React.Component{
     render(){
         return <div>
 
             <AppHeader />
 
-            <Block />
-            <Block />
-            <Block />
-            <Block />
+            {this.props.handles.map((h)=><Block handle={h.name} tweets={h.tweets} />)}
         </div>
     }
 }
 
-export default twitterDeckApp
+App = connect(state=>{
+    return{
+        handles:state.handles
+    }
+})(App)
+
+export default App

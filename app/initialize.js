@@ -15,11 +15,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 injectTapEventPlugin();
 
 let initialState = getInitialState();
+
+console.log(initialState);
+
 let enhancer=composeWithDevTools();
 
 let store = createStore(rootReducer, initialState, enhancer);
-
-console.log(store)
 
 if (module.hot) {
     module.hot.accept('./reducers/rootReducer', () => {

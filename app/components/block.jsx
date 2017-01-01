@@ -7,21 +7,11 @@ class Block extends React.Component{
     render(){
         return <Paper className="tweetBlock" style={{width: 300, display: "inline-block", margin:5, verticalAlign: "top"}}>
 
-                <BlockHeader/>
+                <BlockHeader handle={this.props.handle} />
 
-                <Tweet name="FirstN LastN"
-                          profilePicUrl="http://www.material-ui.com/images/ok-128.jpg"
-                          text="dasdasnmb asiduyqiuwy iqwy 982347oweihrkjenf sd fsd dasdasnmb asiduyqiuwy iqwy 982347oweihrkjenf sd fsd
-dasdasnmb asiduyqiuwy dasdasnmb asiduyqiuwy iqwy 982347oweihrkjenf sd fsd dasdasnmb asiduyqiuwy iqwy 982347oweihrkjenf sd fsd dasdasnmb asiduyqiuwy iqwy 982347oweihrkjenf sd fsd iqwy 982347oweihrkjenf sd fsd dasdasnmb asiduyqiuwy iqwy 982347oweihrkjenf sd fsd" />
-
-                <Tweet name="FirstN LastN"
-                          profilePicUrl="http://www.material-ui.com/images/ok-128.jpg"
-                          text="dasdasnmb asiduyqiuwy iqwy 982347oweihrkjenf sd fsd" />
-
-                <Tweet name="FirstN LastN"
-                          profilePicUrl="http://www.material-ui.com/images/ok-128.jpg"
-                          text="dasdasnmb asiduyqiuwy iqwy 982347oweihrkjenf sd fsd" />
-
+                {this.props.tweets.map((t)=><Tweet name={t.name}
+                                               profilePicUrl={t.profilePicUrl}
+                                               text={t.text} />)}
             </Paper>
     }
 }
