@@ -5,7 +5,7 @@ import getInitialState from './initialState'
 import React from 'react'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import TwitterDeckApp from './components/twitterDeckApp'
+import App from './components/app'
 import rootReducer from './reducers/rootReducer'
 import reactDOM from 'react-dom'
 import {composeWithDevTools} from 'redux-devtools-extension'
@@ -37,7 +37,7 @@ const load = () => {
     reactDOM.render(
         <Provider store={store} >
             <MuiThemeProvider>
-                <TwitterDeckApp />
+                <App />
             </MuiThemeProvider>
         </Provider>,
         document.querySelector("#app")

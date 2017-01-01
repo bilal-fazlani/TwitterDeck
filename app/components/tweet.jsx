@@ -3,18 +3,6 @@ import {Card, CardHeader, CardText} from 'material-ui'
 
 class Tweet extends React.Component{
     render(){
-        return <ListItem leftAvatar={
-            <Avatar src={this.props.profilePicUrl}/>}
-                         primaryText={this.props.name}
-                         secondaryText={this.props.text} >
-        </ListItem>
-    }
-}
-
-export default Tweet;
-
-class TweetNew extends React.Component{
-    render(){
         return <div style={{margin:10}}>
             <Card expandable={true}  initiallyExpanded={true}>
                 <CardHeader actAsExpander={true} showExpandableButton={true}
@@ -30,4 +18,4 @@ class TweetNew extends React.Component{
     }
 }
 
-export {TweetNew};
+export default Tweet;
