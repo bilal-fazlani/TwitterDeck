@@ -5,6 +5,7 @@ export default ()=> {
     return {
         handles:[{
             name:"dangal",
+            isLoading: false,
             tweets:[{
                 text:"this is a sample tweet",
                 profilePicUrl:"http://www.material-ui.com/images/ok-128.jpg",

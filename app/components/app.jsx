@@ -5,11 +5,11 @@ import {connect} from 'react-redux'
 
 class App extends React.Component{
     render(){
-        return <div>
 
+        return <div>
             <AppHeader />
 
-            {this.props.handles.map((h)=><Block name={h.name} tweets={h.tweets} />)}
+            {this.props.handles.map((h)=><Block {...h} />)}
         </div>
     }
 }

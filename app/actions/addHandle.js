@@ -7,7 +7,8 @@ const addHandle = (handleName) => {
         type:"ADD_HANDLE",
         handle: {
             name:handleName,
-            tweets:[]
+            tweets:[],
+            isLoading:true
         }
     }
 }
