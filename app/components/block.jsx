@@ -21,7 +21,7 @@ class Block extends React.Component{
             {
                 this.props.isLoading === true ?
                 <FakeTweet count={3} />
-                :this.props.tweets.map((t)=><Tweet {...t} />)
+                :this.props.tweets.map((t, index)=><Tweet key={index.toString()} {...t} />)
             }
             </Paper>
     }

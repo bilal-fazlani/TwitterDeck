@@ -1,7 +1,7 @@
 import React from 'react'
 import {Toolbar, ToolbarTitle, ToolbarGroup, RaisedButton, TextField} from 'material-ui'
 import {connect} from 'react-redux'
-import addHandle from '../actions/addHandle'
+import {addHandle} from '../actionsCreators/handleActions'
 
 class AppHeader extends React.Component {
     render(){

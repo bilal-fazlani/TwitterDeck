@@ -13,4 +13,12 @@ const addHandle = (handleName) => {
     }
 }
 
-export default addHandle
+const removeHandle = (handleName) => {
+    console.log("handlename: "+ handleName)
+    return {
+        type: "REMOVE_HANDLE",
+        handleName
+    }
+}
+
+export {addHandle, removeHandle}

@@ -1,6 +1,8 @@
 import React from 'react'
 import {IconButton, RefreshIndicator, LinearProgress} from 'material-ui'
 import ActionRemove from 'material-ui/svg-icons/action/delete';
+import {connect} from 'react-redux'
+import {removeHandle} from '../actionsCreators/handleActions'
 
 class BlockHeader extends React.Component {
     render() {
@@ -24,12 +26,19 @@ class BlockHeader extends React.Component {
                     />
                     :
                     <IconButton style={{verticalAlign: "middle"}}
+                                onClick={()=>this.props.onRemoveClick(this.props.name)}
                                 tooltip={`Remove #${this.props.name}`}>
                         <ActionRemove  />
                     </IconButton>}
             </div>
     }
 }
+
+BlockHeader = connect(null, dispatch => {
+    return {
+        onRemoveClick: (handleName)=> dispatch(removeHandle(handleName))
+    }
+})(BlockHeader)
 
 export default BlockHeader
 

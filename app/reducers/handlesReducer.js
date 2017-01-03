@@ -5,11 +5,9 @@ export default (prev = [], action)=>{
 
     switch (action.type){
         case 'ADD_HANDLE':
-            console.log("prev state: ")
-            console.log(prev)
-            console.log("action: ")
-            console.log(action)
             return [...prev, action.handle]
+        case 'REMOVE_HANDLE':
+            return prev.filter(x=>x.name != action.handleName)
         default:
             return prev;
     }
