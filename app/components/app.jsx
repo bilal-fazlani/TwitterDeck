@@ -8,8 +8,12 @@ class App extends React.Component{
 
         return <div>
             <AppHeader />
-
-            {this.props.handles.map((h)=><Block {...h} />)}
+            {this.props.handles.length > 0 ?
+                this.props.handles.map((h)=><Block {...h} />):
+                <div id="no-handles">
+                    No handles :(
+                </div>
+            }
         </div>
     }
 }

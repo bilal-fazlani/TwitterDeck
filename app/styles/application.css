@@ -1,3 +1,7 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
     margin-left: 5px;
@@ -15,4 +19,10 @@ h1, h2{
 
 .tweetBlock {
     background-color: rgb(232, 232, 232)!important;
+}
+
+#no-handles{
+    padding: 20px;
+    margin: 20px auto;
+    width: 100px;
 }
