@@ -12,7 +12,6 @@ class AppHeader extends React.Component {
                     <TextField ref={node=>this.input=node} hintText="#handle" required={true} /> &nbsp;
                     <RaisedButton label="Add handle" primary={true}
                                   onClick={()=>{
-                                      console.log("onClick called-> handlename: "+ this.input.input.value)
                                       this.props.onAddClick(this.input.input.value)
                                   }} />
                 </form>
@@ -24,7 +23,6 @@ class AppHeader extends React.Component {
 AppHeader = connect(null, dispatch => {
     return{
         onAddClick : (input)=> {
-            console.log("onAddClick called -> handlename: "+ input)
             dispatch(addHandle(input))
         }
     }

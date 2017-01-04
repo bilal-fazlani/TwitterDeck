@@ -6,9 +6,6 @@ import {removeHandle} from '../actionsCreators/handleActions'
 
 class BlockHeader extends React.Component {
     render() {
-
-        console.log("blockheader: isLoading: " + this.props.isLoading)
-
         return <div style={{display: "flex",
                 justifyContent: "space-between",
                 position: 'relative'}}>

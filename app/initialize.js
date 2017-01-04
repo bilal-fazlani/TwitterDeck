@@ -16,8 +16,6 @@ injectTapEventPlugin();
 
 let initialState = getInitialState();
 
-console.log(initialState);
-
 let enhancer=composeWithDevTools();
 
 let store = createStore(rootReducer, initialState, enhancer);
