@@ -1,7 +1,7 @@
 /**
  * Created by bilalmf on 01/01/17.
  */
-import getInitialState from './initialState'
+import getServerHandles from './initialState'
 import React from 'react'
 import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk';
@@ -15,38 +15,51 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 injectTapEventPlugin();
 
-let initialState = getInitialState();
+getServerHandles()
+    .then(handles => {
+        return {
+            handles: handles.map(h=>{
+                return {
+                    ...h,
+                    isSaving:false,
+                    tweets: [],
+                    tweetsLoading: true
+                }
+        })}
+    })
+    .then(initialState=>{
+    let enhancer=composeWithDevTools(applyMiddleware(thunk));
 
-let enhancer=composeWithDevTools(applyMiddleware(thunk));
+    let store = createStore(rootReducer, initialState, enhancer);
 
-let store = createStore(rootReducer, initialState, enhancer);
+    if (module.hot) {
+        module.hot.accept('./reducers/rootReducer', () => {
+            store.replaceReducer(require('./reducers/rootReducer').default);
+        });
+        module.hot.accept();
 
-if (module.hot) {
-    module.hot.accept('./reducers/rootReducer', () => {
-        store.replaceReducer(require('./reducers/rootReducer').default);
-    });
-    module.hot.accept();
+        module.hot.dispose((data) => {
+            data.counter = store.getState();
+            [].slice.apply(document.querySelector('#app').children).forEach(function(c) { c.remove() });
+        });
+    }
 
-    module.hot.dispose((data) => {
-        data.counter = store.getState();
-        [].slice.apply(document.querySelector('#app').children).forEach(function(c) { c.remove() });
-    });
-}
+    const load = () => {
+        reactDOM.render(
+            <Provider store={store} >
+                <MuiThemeProvider>
+                    <App />
+                </MuiThemeProvider>
+            </Provider>,
+            document.querySelector("#app")
+        )
+    }
 
-const load = () => {
-    reactDOM.render(
-        <Provider store={store} >
-            <MuiThemeProvider>
-                <App />
-            </MuiThemeProvider>
-        </Provider>,
-        document.querySelector("#app")
-    )
-}
+    if (document.readyState !== 'complete') {
+        document.addEventListener('DOMContentLoaded', load);
+    } else {
+        load();
+    }
+})
 
-if (document.readyState !== 'complete') {
-    document.addEventListener('DOMContentLoaded', load);
-} else {
-    load();
-}
 
