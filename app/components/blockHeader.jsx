@@ -23,7 +23,7 @@ class BlockHeader extends React.Component {
                     />
                     :
                     <IconButton style={{verticalAlign: "middle"}}
-                                onClick={()=>this.props.onRemoveClick(this.props.name)}
+                                onClick={()=>this.props.onRemoveClick(this.props.id)}
                                 tooltip={`Remove #${this.props.name}`}>
                         <ActionRemove />
                     </IconButton>}
@@ -33,7 +33,7 @@ class BlockHeader extends React.Component {
 
 BlockHeader = connect(null, dispatch => {
     return {
-        onRemoveClick: (handleName)=> dispatch(removeHandle(handleName))
+        onRemoveClick: (id)=> dispatch(removeHandle(id))
     }
 })(BlockHeader)
 

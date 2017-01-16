@@ -7,6 +7,7 @@ export default ()=> {
             name:"dangal",
             tweetsLoading: false,
             isSaving:false,
+            id:"1",
             tweets:[{
                 text:"this is a sample tweet",
                 profilePicUrl:"http://www.material-ui.com/images/ok-128.jpg",
@@ -17,6 +18,7 @@ export default ()=> {
                 name:"raees",
                 tweetsLoading: false,
                 isSaving:true,
+                id:"2",
                 tweets:[{
                     text:"this is a sample tweet",
                     profilePicUrl:"http://www.material-ui.com/images/ok-128.jpg",
