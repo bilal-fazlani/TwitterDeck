@@ -67,9 +67,13 @@ const addHandleServerAsync = (handleName) => {
                 if(response.status != 201)
                     throw "could no save handle. status: "+ response.status
 
-                console.log(JSON.stringify(response));
                 console.log(`added ${handleName} on server`);
-                dispatch(handleSaved(handleName, response.body.toString()));
+
+                return response.json();
+            })
+            .then(json => {
+                console.log(json);
+                dispatch(handleSaved(handleName, json.id));
             })
             .catch(err=> {
                 console.log(err)
