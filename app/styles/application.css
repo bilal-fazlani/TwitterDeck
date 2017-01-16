@@ -17,6 +17,10 @@ h1, h2{
     margin-left: 10px;
 }
 
+h2.saving{
+    color:darkgray;
+}
+
 .tweetBlock {
     background-color: rgb(232, 232, 232)!important;
 }

@@ -8,14 +8,15 @@ const addHandle = (handleName) => {
         handle: {
             name:handleName,
             tweets:[],
-            tweetsLoading:true
+            tweetsLoading:true,
+            isSaving:true
         }
     }
 }
 
-const handleAdded = (handleName, id) => {
+const handleSaved = (handleName, id) => {
     return {
-        type:"HANDLE_ADDED",
+        type:"HANDLE_SAVED",
         handle: {
             name:handleName,
             id
@@ -68,7 +69,7 @@ const addHandleServerAsync = (handleName) => {
 
                 console.log(JSON.stringify(response));
                 console.log(`added ${handleName} on server`);
-                dispatch(handleAdded(handleName, response.body.toString()));
+                dispatch(handleSaved(handleName, response.body.toString()));
             })
             .catch(err=> {
                 console.log(err)

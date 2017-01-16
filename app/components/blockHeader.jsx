@@ -9,7 +9,7 @@ class BlockHeader extends React.Component {
         return <div style={{display: "flex",
                 justifyContent: "space-between",
                 position: 'relative'}}>
-                <h2 style={{display: "inline", marginTop: 10}}>#{this.props.name}</h2>
+                <h2 className={this.props.isSaving?"saving":""} style={{display: "inline", marginTop: 10}}>#{this.props.name}</h2>
                 {this.props.tweetsLoading === true ?
                     <RefreshIndicator
                         size={40}
@@ -25,7 +25,7 @@ class BlockHeader extends React.Component {
                     <IconButton style={{verticalAlign: "middle"}}
                                 onClick={()=>this.props.onRemoveClick(this.props.name)}
                                 tooltip={`Remove #${this.props.name}`}>
-                        <ActionRemove  />
+                        <ActionRemove />
                     </IconButton>}
             </div>
     }
