@@ -17,8 +17,12 @@ h1, h2{
     margin-left: 10px;
 }
 
-h2.saving{
+h2.gray{
     color:darkgray;
+}
+
+h2.blur{
+    filter: blur(2px);
 }
 
 .tweetBlock {
