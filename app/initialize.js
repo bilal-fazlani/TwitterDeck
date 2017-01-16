@@ -3,7 +3,8 @@
  */
 import getInitialState from './initialState'
 import React from 'react'
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
+import thunk from 'redux-thunk';
 import {Provider} from 'react-redux'
 import App from './components/app'
 import rootReducer from './reducers/rootReducer'
@@ -16,7 +17,7 @@ injectTapEventPlugin();
 
 let initialState = getInitialState();
 
-let enhancer=composeWithDevTools();
+let enhancer=composeWithDevTools(applyMiddleware(thunk));
 
 let store = createStore(rootReducer, initialState, enhancer);
 

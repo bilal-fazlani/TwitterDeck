@@ -1,7 +1,7 @@
 import React from 'react'
 import {Toolbar, ToolbarTitle, ToolbarGroup, RaisedButton, TextField} from 'material-ui'
 import {connect} from 'react-redux'
-import {addHandle} from '../actionsCreators/handleActions'
+import {addHandleServerAsync} from '../actionsCreators/handleActions'
 
 class AppHeader extends React.Component {
     render(){
@@ -23,7 +23,7 @@ class AppHeader extends React.Component {
 AppHeader = connect(null, dispatch => {
     return{
         onAddClick : (input)=> {
-            dispatch(addHandle(input))
+            dispatch(addHandleServerAsync(input))
         }
     }
 })(AppHeader)

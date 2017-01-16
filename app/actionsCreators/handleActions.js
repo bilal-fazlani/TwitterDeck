@@ -8,7 +8,17 @@ const addHandle = (handleName) => {
         handle: {
             name:handleName,
             tweets:[],
-            isLoading:true
+            tweetsLoading:true
+        }
+    }
+}
+
+const handleAdded = (handleName, id) => {
+    return {
+        type:"HANDLE_ADDED",
+        handle: {
+            name:handleName,
+            id
         }
     }
 }
@@ -21,4 +31,51 @@ const removeHandle = (handleName) => {
     }
 }
 
-export {addHandle, removeHandle}
+const showError = (error) => {
+    return {
+        type: "SHOW_ERROR",
+        error
+    }
+}
+
+const addHandleServerAsync = (handleName) => {
+
+    return (dispatch) => {
+
+        dispatch(addHandle(handleName));
+
+        let headers = new Headers({
+            "content-type": "application/json;charset=UTF-8",
+            "accept": "application/json"
+        });
+
+        let options = {
+            method: 'POST',
+            cache: 'default',
+            mode: 'cors',
+            headers: headers,
+            body: JSON.stringify({
+                name:handleName
+            })
+        };
+
+
+        return fetch("http://localhost:5000/api/handle", options)
+            .then(response=>{
+
+                if(response.status != 201)
+                    throw "could no save handle. status: "+ response.status
+
+                console.log(JSON.stringify(response));
+                console.log(`added ${handleName} on server`);
+                dispatch(handleAdded(handleName, response.body.toString()));
+            })
+            .catch(err=> {
+                console.log(err)
+                dispatch(removeHandle(handleName))
+                dispatch(showError(err))
+            });
+    }
+}
+
+export {addHandle, removeHandle, addHandleServerAsync}

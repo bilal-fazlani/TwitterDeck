@@ -10,7 +10,7 @@ class BlockHeader extends React.Component {
                 justifyContent: "space-between",
                 position: 'relative'}}>
                 <h2 style={{display: "inline", marginTop: 10}}>#{this.props.name}</h2>
-                {this.props.isLoading === true ?
+                {this.props.tweetsLoading === true ?
                     <RefreshIndicator
                         size={40}
                         left={0}

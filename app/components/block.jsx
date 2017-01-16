@@ -19,7 +19,7 @@ class Block extends React.Component{
                 <BlockHeader {...this.props} />
 
             {
-                this.props.isLoading === true ?
+                this.props.tweetsLoading === true ?
                 <FakeTweet count={3} />
                 :this.props.tweets.map((t, index)=><Tweet key={index.toString()} {...t} />)
             }

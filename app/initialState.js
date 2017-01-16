@@ -5,12 +5,23 @@ export default ()=> {
     return {
         handles:[{
             name:"dangal",
-            isLoading: false,
+            tweetsLoading: false,
+            isSaving:false,
             tweets:[{
                 text:"this is a sample tweet",
                 profilePicUrl:"http://www.material-ui.com/images/ok-128.jpg",
-                name:"my name is khan"
+                name:"aamir khan"
             }]
-        }]
+        },
+            {
+                name:"raees",
+                tweetsLoading: false,
+                isSaving:true,
+                tweets:[{
+                    text:"this is a sample tweet",
+                    profilePicUrl:"http://www.material-ui.com/images/ok-128.jpg",
+                    name:"SRK"
+                }]
+            }]
     }
 }
