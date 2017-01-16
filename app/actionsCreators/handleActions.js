@@ -1,7 +1,7 @@
 /**
  * Created by bilalmf on 01/01/17.
  */
-const addHandle = (handleName) => {
+const addHandle = (handleName, localId) => {
 
     return {
         type:"ADD_HANDLE",
@@ -9,26 +9,25 @@ const addHandle = (handleName) => {
             name:handleName,
             tweets:[],
             tweetsLoading:true,
-            isSaving:true
+            isSaving:true,
+            id: localId
         }
     }
 }
 
-const handleSaved = (handleName, id) => {
+const handleSaved = (localId, id) => {
     return {
         type:"HANDLE_SAVED",
-        handle: {
-            name:handleName,
-            id
-        }
+        id,
+        localId
     }
 }
 
-const removeHandle = (handleName) => {
+const removeHandle = (id) => {
 
     return {
         type: "REMOVE_HANDLE",
-        handleName
+        id
     }
 }
 
@@ -43,7 +42,9 @@ const addHandleServerAsync = (handleName) => {
 
     return (dispatch) => {
 
-        dispatch(addHandle(handleName));
+        let localId = "local_"+Date.now().toString();
+
+        dispatch(addHandle(handleName, localId));
 
         let headers = new Headers({
             "content-type": "application/json;charset=UTF-8",
@@ -56,7 +57,8 @@ const addHandleServerAsync = (handleName) => {
             mode: 'cors',
             headers: headers,
             body: JSON.stringify({
-                name:handleName
+                name:handleName,
+                localId
             })
         };
 
@@ -73,11 +75,11 @@ const addHandleServerAsync = (handleName) => {
             })
             .then(json => {
                 console.log(json);
-                dispatch(handleSaved(handleName, json.id));
+                dispatch(handleSaved(localId, json.id));
             })
             .catch(err=> {
                 console.log(err)
-                dispatch(removeHandle(handleName))
+                dispatch(removeHandle(localId))
                 dispatch(showError(err))
             });
     }

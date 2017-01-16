@@ -7,7 +7,16 @@ export default (prev = [], action)=>{
         case 'ADD_HANDLE':
             return [...prev, action.handle]
         case 'REMOVE_HANDLE':
-            return prev.filter(x=>x.name != action.handleName)
+            return prev.filter(x=>x.id != action.id)
+        case 'HANDLE_SAVED':
+            return prev.map(h=>{
+                if(h.id == action.localId){
+                    return {...h, isSaving:false, id:action.id}
+                }
+                else{
+                    return {...h}
+                }
+            })
         default:
             return prev;
     }
