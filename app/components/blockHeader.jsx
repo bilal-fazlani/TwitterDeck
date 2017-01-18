@@ -1,8 +1,8 @@
 import React from 'react'
-import {IconButton, RefreshIndicator, LinearProgress} from 'material-ui'
+import {IconButton, RefreshIndicator} from 'material-ui'
 import ActionRemove from 'material-ui/svg-icons/action/delete';
 import {connect} from 'react-redux'
-import {removeHandle} from '../actionsCreators/handleActions'
+import {removeHandleServerAsync} from '../actionsCreators/handleActions'
 
 class BlockHeader extends React.Component {
     render() {
@@ -38,7 +38,7 @@ class BlockHeader extends React.Component {
 
 BlockHeader = connect(null, dispatch => {
     return {
-        onRemoveClick: (id)=> dispatch(removeHandle(id))
+        onRemoveClick: (id)=> dispatch(removeHandleServerAsync(id))
     }
 })(BlockHeader)
 

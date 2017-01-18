@@ -38,6 +38,43 @@ const showError = (error) => {
     }
 }
 
+const removeHandleServerAsync = (id) => {
+    return (dispatch) => {
+
+        dispatch(removeHandle(id));
+        console.log("removing..."+id);
+
+        let headers = new Headers({
+            "content-type": "application/json;charset=UTF-8",
+            "accept": "application/json"
+        });
+
+        let options = {
+            method: 'DELETE',
+            cache: 'default',
+            mode: 'cors',
+            headers: headers
+        };
+
+
+        return fetch("http://localhost:5000/api/handle/"+id, options)
+            .then(response=>{
+
+                if(response.status != 200)
+                    throw "could no remove handle. status: "+ response.status
+
+                else{
+                    console.log(`removed ${id} from server`);
+                }
+            })
+            .catch(err=> {
+                console.log(err)
+                dispatch(showError(err))
+            });
+
+    }
+}
+
 const addHandleServerAsync = (handleName) => {
 
     return (dispatch) => {
@@ -82,7 +119,9 @@ const addHandleServerAsync = (handleName) => {
                 dispatch(removeHandle(localId))
                 dispatch(showError(err))
             });
+
+
     }
 }
 
-export {addHandle, removeHandle, addHandleServerAsync}
+export {addHandle, addHandleServerAsync, removeHandleServerAsync}
