@@ -5,7 +5,9 @@ import {addHandleServerAsync} from '../actionsCreators/handleActions'
 
 class AppHeader extends React.Component {
     render(){
-        return <Toolbar>
+        return <Toolbar style={{
+            borderRadius:5
+        }}>
             <ToolbarTitle text="Twitter Deck" firstChild={true} />
             <ToolbarGroup >
                 <form ref={(node)=>this.form = node} >
