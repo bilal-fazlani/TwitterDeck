@@ -14,7 +14,23 @@ class Tweet extends React.Component{
                     avatar={this.props.profilePicUrl}
                 />
                 <CardText expandable={true}>
-                    {this.props.text}
+                    {!this.props.includeRetweets?
+                    this.props.text:
+                        <div>
+                            <Card expandable={true}  initiallyExpanded={true}>
+                                <CardHeader actAsExpander={true} showExpandableButton={true}
+                                            title={this.props.retweetedTweet.name}
+                                            subtitle={<FormattedRelative
+                                                value={new Date(this.props.retweetedTweet.createdAt)} />
+                                            }
+                                            avatar={this.props.retweetedTweet.profilePicUrl}
+                                />
+                                <CardText expandable={true}>
+                                    {this.props.retweetedTweet.text}
+                                </CardText>
+                            </Card>
+                        </div>
+                    }
                 </CardText>
             </Card>
         </div>
