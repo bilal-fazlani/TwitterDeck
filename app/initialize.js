@@ -4,13 +4,13 @@
 import React from 'react'
 import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk';
-import {Provider} from 'react-redux'
 import App from './components/app'
 import rootReducer from './reducers/rootReducer'
 import reactDOM from 'react-dom'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {Provider} from 'react-intl-redux'
 
 injectTapEventPlugin();
 
