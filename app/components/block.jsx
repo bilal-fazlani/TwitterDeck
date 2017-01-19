@@ -4,8 +4,15 @@ import Tweet from './tweet'
 import BlockHeader from './blockHeader'
 import {connect} from 'react-redux'
 import FakeTweet from './fakeTweets'
+import {loadTweetsServerAsync} from '../actionsCreators/tweetActions'
 
 class Block extends React.Component{
+    constructor(props){
+        super(props);
+
+        this.props.onLoadBlock(this.props.name, this.props.localId)
+    }
+
     render(){
         return <Paper className="tweetBlock"
                       style={
@@ -26,5 +33,13 @@ class Block extends React.Component{
             </Paper>
     }
 }
+
+Block = connect(null, dispatch => {
+    return {
+        onLoadBlock: (handleName, localId)=>{
+            dispatch(loadTweetsServerAsync(localId, handleName))
+        }
+    }
+})(Block)
 
 export default Block;

@@ -1,6 +1,8 @@
 /**
  * Created by bilalmf on 01/01/17.
  */
+import {showError} from './commonActions'
+
 const addHandle = (handleName, localId) => {
 
     return {
@@ -28,13 +30,6 @@ const removeHandle = (id) => {
     return {
         type: "REMOVE_HANDLE",
         id
-    }
-}
-
-const showError = (error) => {
-    return {
-        type: "SHOW_ERROR",
-        error
     }
 }
 

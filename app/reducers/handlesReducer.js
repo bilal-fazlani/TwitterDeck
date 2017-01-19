@@ -11,7 +11,7 @@ export default (prev = [], action)=>{
         case 'HANDLE_SAVED':
             return prev.map(h=>{
                 if(h.id == action.localId){
-                    return {...h, isSaving:false, id:action.id}
+                    return {...h, isSaving:false, id:action.id, localId: action.localId}
                 }
                 else{
                     return {...h}
@@ -24,7 +24,8 @@ export default (prev = [], action)=>{
                         ...h,
                         isSaving:false,
                         tweets: [],
-                        tweetsLoading: true
+                        tweetsLoading: true,
+                        localId: h.id
                     }
                 })
         default:
