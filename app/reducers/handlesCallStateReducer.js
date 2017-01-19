@@ -6,7 +6,6 @@ export default (prev = "loading", action)=>{
         case "LOAD_HANDLES":
             return "loading"
         case "HANDLES_LOADED":
-            console.log("reducer 2 called")
             return "loaded"
         default:
             return prev

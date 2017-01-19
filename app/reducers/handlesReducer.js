@@ -18,7 +18,6 @@ export default (prev = [], action)=>{
                 }
             })
         case "HANDLES_LOADED":
-            console.log("reducer 1 called")
             return action.handles.map(h=>{
                     return {
                         ...h,
@@ -28,6 +27,26 @@ export default (prev = [], action)=>{
                         localId: h.id
                     }
                 })
+        case "LOAD_TWEETS":
+            return prev.map(h=>{
+                if(h.localId == action.localId){
+                    return {...h, tweetsLoading:true}
+                }
+                else{
+                    return {...h}
+                }
+            })
+
+        case "TWEETS_LOADED":
+            return prev.map(h=>{
+                if(h.localId == action.localId){
+                    return {...h, tweetsLoading:false, tweets:action.tweets}
+                }
+                else{
+                    return {...h}
+                }
+            })
+
         default:
             return prev;
     }

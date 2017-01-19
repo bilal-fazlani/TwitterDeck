@@ -52,7 +52,7 @@ const loadTweetsServerAsync = (localId, handleName)=>{
             })
             .then(json => {
                 console.log(json);
-                dispatch(tweetsLoaded(localId));
+                dispatch(tweetsLoaded(localId, json.statuses));
             })
             .catch(err=> {
                 console.log(err)

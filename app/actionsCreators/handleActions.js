@@ -2,6 +2,7 @@
  * Created by bilalmf on 01/01/17.
  */
 import {showError} from './commonActions'
+import {loadTweetsServerAsync} from './tweetActions'
 
 const addHandle = (handleName, localId) => {
 
@@ -129,6 +130,7 @@ const addHandleServerAsync = (handleName) => {
         let localId = "local_"+Date.now().toString();
 
         dispatch(addHandle(handleName, localId));
+        dispatch(loadTweetsServerAsync(localId, handleName))
 
         let headers = new Headers({
             "content-type": "application/json;charset=UTF-8",
