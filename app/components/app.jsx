@@ -1,5 +1,5 @@
 import  React from "react";
-import Block from './block'
+import BlockList from './blockList'
 import AppHeader from './appHeader'
 import {connect} from 'react-redux'
 
@@ -8,12 +8,7 @@ class App extends React.Component{
 
         return <div>
             <AppHeader />
-            {this.props.handles.length > 0 ?
-                this.props.handles.map((h)=><Block {...h} />):
-                <div id="no-handles">
-                    No handles :(
-                </div>
-            }
+            <BlockList />
         </div>
     }
 }
