@@ -5,7 +5,11 @@ class Retweet extends React.Component{
     render(){
         return <div className="retweet">
             <div className="retweet-Name">
-                {this.props.name}
+                {<span>{this.props.name}
+                    {this.props.verifiedUser?
+                        <img className="verified-tick" src="/twitter_verified_tick.png" />:
+                        null}
+                </span>}
             </div>
             <div className="retweet-Time">
                 <FormattedRelative value={new Date(this.props.createdAt)} />

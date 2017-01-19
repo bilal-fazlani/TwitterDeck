@@ -51,3 +51,9 @@ h2.blur{
     color: #757580;;
     margin-bottom: 10px;
 }
+
+.verified-tick{
+    width: 18px;
+    vertical-align: middle;
+    margin-left: 5px;
+}

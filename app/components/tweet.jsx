@@ -8,7 +8,11 @@ class Tweet extends React.Component{
         return <div style={{margin:10}}>
             <Card expandable={true}  initiallyExpanded={true}>
                 <CardHeader actAsExpander={true} showExpandableButton={true}
-                    title={this.props.name}
+                            title={<span>{this.props.name}
+                                {this.props.verifiedUser?
+                                <img className="verified-tick" src="/twitter_verified_tick.png" />:
+                                    null}
+                            </span>}
                             subtitle={<FormattedRelative
                                 value={new Date(this.props.createdAt)} />
                             }
