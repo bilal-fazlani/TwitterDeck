@@ -16,7 +16,7 @@ class Block extends React.Component{
     render(){
         return <Paper className="tweetBlock"
                       style={
-                          {width: 300,
+                          {width: 400,
                               display: "inline-block",
                               margin:5,
                               verticalAlign: "top",

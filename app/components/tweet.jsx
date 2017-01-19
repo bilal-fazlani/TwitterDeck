@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, CardHeader, CardText} from 'material-ui'
-import {FormattedDate, FormattedTime, FormattedRelative} from 'react-intl'
+import {FormattedRelative} from 'react-intl'
+import Retweet from './retweet'
 
 class Tweet extends React.Component{
     render(){
@@ -16,20 +17,7 @@ class Tweet extends React.Component{
                 <CardText expandable={true}>
                     {!this.props.includeRetweets?
                     this.props.text:
-                        <div>
-                            <Card expandable={true}  initiallyExpanded={true}>
-                                <CardHeader actAsExpander={true} showExpandableButton={true}
-                                            title={this.props.retweetedTweet.name}
-                                            subtitle={<FormattedRelative
-                                                value={new Date(this.props.retweetedTweet.createdAt)} />
-                                            }
-                                            avatar={this.props.retweetedTweet.profilePicUrl}
-                                />
-                                <CardText expandable={true}>
-                                    {this.props.retweetedTweet.text}
-                                </CardText>
-                            </Card>
-                        </div>
+                        <Retweet {...this.props.retweetedTweet} />
                     }
                 </CardText>
             </Card>

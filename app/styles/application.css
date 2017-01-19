@@ -34,3 +34,20 @@ h2.blur{
     margin: 20px auto;
     width: 200px;
 }
+
+.retweet{
+    background-color: rgba(192, 229, 253, 0.18);
+    margin: -5px;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid rgba(125, 207, 255, 0.3);
+}
+
+.retweet-Name{
+    font-weight: bold;
+}
+
+.retweet-Time{
+    color: #757580;;
+    margin-bottom: 10px;
+}
