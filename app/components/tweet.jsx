@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card, CardHeader, CardText} from 'material-ui'
-import {FormattedDate, FormattedTime} from 'react-intl'
+import {FormattedDate, FormattedTime, FormattedRelative} from 'react-intl'
 
 class Tweet extends React.Component{
     render(){
@@ -8,14 +8,8 @@ class Tweet extends React.Component{
             <Card expandable={true}  initiallyExpanded={true}>
                 <CardHeader actAsExpander={true} showExpandableButton={true}
                     title={this.props.name}
-                            subtitle={<span>
-                                <FormattedDate value={new Date(this.props.createdAt)}
-                                               year='numeric'
-                                               month='short'
-                                               day='numeric'
-                                />&nbsp;
-                            <FormattedTime value={new Date(this.props.createdAt)}/>
-                            </span>
+                            subtitle={<FormattedRelative
+                                value={new Date(this.props.createdAt)} />
                             }
                     avatar={this.props.profilePicUrl}
                 />
