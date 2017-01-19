@@ -9,8 +9,13 @@ class AppHeader extends React.Component {
             <ToolbarTitle text="Twitter Deck" firstChild={true} />
             <ToolbarGroup >
                 <form ref={(node)=>this.form = node} >
-                    <TextField ref={node=>this.input=node} hintText="#handle" required={true} /> &nbsp;
-                    <RaisedButton label="Add handle" primary={true}
+                    <TextField ref={node=>this.input=node}
+                               hintText="#handle"
+                               disabled={this.props.handlesCallState!="loaded"}
+                               required={true} /> &nbsp;
+                    <RaisedButton label="Add handle"
+                                  disabled={this.props.handlesCallState!="loaded"}
+                                  primary={true}
                                   onClick={()=>{
                                       this.props.onAddClick(this.input.input.value)
                                   }} />
@@ -20,7 +25,11 @@ class AppHeader extends React.Component {
     }
 }
 
-AppHeader = connect(null, dispatch => {
+AppHeader = connect(state=>{
+    return{
+        ...state
+    }
+}, dispatch => {
     return{
         onAddClick : (input)=> {
             dispatch(addHandleServerAsync(input))

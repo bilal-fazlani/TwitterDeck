@@ -15,7 +15,7 @@ class App extends React.Component{
 
 App = connect(state=>{
     return{
-        handles:state.handles
+        ...state
     }
 })(App)
 

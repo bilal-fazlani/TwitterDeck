@@ -75,6 +75,58 @@ const removeHandleServerAsync = (id) => {
     }
 }
 
+const handlesLoaded = (handles)=>{
+    return {
+        type:"HANDLES_LOADED",
+        handles
+    }
+}
+
+const loadHandles = ()=>{
+    return {
+        type:"LOAD_HANDLES"
+    }
+}
+
+const loadHandlesServerAsync = () => {
+return (dispatch) => {
+
+    dispatch(loadHandles())
+
+    let headers = new Headers({
+        "content-type": "application/json;charset=UTF-8",
+        "accept": "application/json"
+    });
+
+    let options = {
+        method: 'GET',
+        cache: 'default',
+        mode: 'cors',
+        headers: headers
+    };
+
+
+    return fetch("http://localhost:5000/api/handle/list", options)
+        .then(response=>{
+
+            if(response.status != 200)
+                throw "could no load handle list. status: "+ response.status
+
+            console.log(`loaded all handles`);
+
+            return response.json();
+        })
+        .then(json => {
+            console.log(json);
+            dispatch(handlesLoaded(json));
+        })
+        .catch(err=> {
+            console.log(err)
+            dispatch(showError(err))
+        });
+}
+}
+
 const addHandleServerAsync = (handleName) => {
 
     return (dispatch) => {
@@ -124,4 +176,4 @@ const addHandleServerAsync = (handleName) => {
     }
 }
 
-export {addHandle, addHandleServerAsync, removeHandleServerAsync}
+export {addHandle, addHandleServerAsync, removeHandleServerAsync, loadHandlesServerAsync}

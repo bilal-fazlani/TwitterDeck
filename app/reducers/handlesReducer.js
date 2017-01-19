@@ -17,6 +17,16 @@ export default (prev = [], action)=>{
                     return {...h}
                 }
             })
+        case "HANDLES_LOADED":
+            console.log("reducer 1 called")
+            return action.handles.map(h=>{
+                    return {
+                        ...h,
+                        isSaving:false,
+                        tweets: [],
+                        tweetsLoading: true
+                    }
+                })
         default:
             return prev;
     }
