@@ -14,11 +14,9 @@ import {Provider} from 'react-intl-redux'
 
 injectTapEventPlugin();
 
-let initialState = {};
-
 let enhancer=composeWithDevTools(applyMiddleware(thunk));
 
-let store = createStore(rootReducer, initialState, enhancer);
+let store = createStore(rootReducer, enhancer);
 
 if (module.hot) {
     module.hot.accept('./reducers/rootReducer', () => {
