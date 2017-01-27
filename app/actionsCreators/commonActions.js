@@ -2,11 +2,17 @@
  * Created by bilalmf on 19/01/17.
  */
 
-const showError = (error) => {
+const showError = (message) => {
     return {
         type: "SHOW_ERROR",
-        error
+        message: message.toString()
     }
 }
 
-export {showError}
+const hideError = () => {
+    return {
+        type: "HIDE_ERROR"
+    }
+}
+
+export {showError, hideError}
