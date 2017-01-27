@@ -17,12 +17,25 @@ class TwitterText extends React.Component{
             console.log(component)
 
             if(component.tweetComponentType === "text"){
-                renderedComponents.push(<span>
+                renderedComponents.push(<span className="tweetText">
                     {component.text}
                 </span>)
             }
+
+            else if(component.tweetComponentType === "hashTag"){
+                renderedComponents.push(<span className="hashTag">
+                    {component.text}
+                </span>)
+            }
+
+            else if(component.tweetComponentType === "userMention"){
+                renderedComponents.push(<span className="userMention">
+                    {component.text}
+                </span>)
+            }
+
             else if(component.tweetComponentType === "url"){
-                renderedComponents.push(<a
+                renderedComponents.push(<a className="tweetLink"
                     target="_blank"
                     href={component.url}>
                     {component.text}</a>)

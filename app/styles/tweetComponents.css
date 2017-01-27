@@ -1,0 +1,30 @@
+.hashTag{
+    background-color: #f2ff93;
+    padding: 1px 3px;
+    margin-right: 3px;
+    border-radius: 3px;
+    border:1px solid #bbc76f;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.hashTag:hover{
+    background-color: #bbc76f;
+}
+
+.userMention{
+    background-color: #ffdf93;
+    padding: 1px 3px;
+    margin-right: 3px;
+    border-radius: 3px;
+    border:1px solid #ccb172;
+    display: inline-block;
+}
+
+.userMention:hover{
+    background-color: #ccb172;
+}
+
+.tweetText{
+    margin-right: 3px;
+}
