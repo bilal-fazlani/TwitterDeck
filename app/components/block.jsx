@@ -1,6 +1,6 @@
 import React from "react";
 import {Paper} from 'material-ui';
-import Tweet from './tweet'
+import TweetBox from './tweetBox'
 import BlockHeader from './blockHeader'
 import {connect} from 'react-redux'
 import FakeTweet from './fakeTweets'
@@ -28,7 +28,7 @@ class Block extends React.Component{
             {
                 this.props.tweetsLoading === true ?
                 <FakeTweet count={3} />
-                :this.props.tweets.map((t, index)=><Tweet key={index.toString()} {...t} />)
+                :this.props.tweets.map((t, index)=><TweetBox key={index.toString()} {...t} />)
             }
             </Paper>
     }

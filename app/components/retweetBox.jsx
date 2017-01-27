@@ -1,7 +1,8 @@
 import React from 'react'
 import {FormattedRelative} from 'react-intl'
+import Tweet from './tweet'
 
-class Retweet extends React.Component{
+class RetweetBox extends React.Component{
     render(){
         return <div className="retweet">
             <div className="retweet-Name">
@@ -16,11 +17,11 @@ class Retweet extends React.Component{
             </div>
             <div className="retweet-Text">
                 {!this.props.includeRetweets?
-                    this.props.text:
-                <Retweet {...this.props.retweetedTweet} />}
+                    <Tweet tweetComponents={this.props.tweetComponents} />
+                :<RetweetBox {...this.props.retweetedTweet} />}
             </div>
         </div>
     }
 }
 
-export default Retweet;
+export default RetweetBox;
